@@ -10,6 +10,30 @@ interface CosmicObject {
   modified_at: string;
 }
 
+// Homepage interface
+export interface Homepage extends CosmicObject {
+  type: 'homepage';
+  metadata: {
+    hero_title: string;
+    hero_subtitle: string;
+    hero_background_image: {
+      url: string;
+      imgix_url: string;
+    };
+    featured_exhibits?: Exhibit[];
+    about_title?: string;
+    about_content?: string;
+    about_image?: {
+      url: string;
+      imgix_url: string;
+    };
+    events_title?: string;
+    events_subtitle?: string;
+    exhibits_title?: string;
+    exhibits_subtitle?: string;
+  };
+}
+
 // Exhibit interface
 export interface Exhibit extends CosmicObject {
   type: 'exhibits';
@@ -102,6 +126,10 @@ export interface CosmicResponse<T> {
 }
 
 // Type guards for runtime validation
+export function isHomepage(obj: CosmicObject): obj is Homepage {
+  return obj.type === 'homepage';
+}
+
 export function isExhibit(obj: CosmicObject): obj is Exhibit {
   return obj.type === 'exhibits';
 }

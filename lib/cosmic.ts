@@ -12,6 +12,24 @@ function hasStatus(error: unknown): error is { status: number } {
   return typeof error === 'object' && error !== null && 'status' in error
 }
 
+// Fetch homepage content
+export async function getHomepage() {
+  try {
+    const response = await cosmic.objects
+      .findOne({
+        type: 'homepage'
+      })
+      .depth(1)
+    
+    return response.object
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return null
+    }
+    throw new Error('Failed to fetch homepage content')
+  }
+}
+
 // Fetch all exhibits
 export async function getExhibits() {
   try {
