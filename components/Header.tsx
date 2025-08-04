@@ -27,7 +27,7 @@ export default function Header({ navPages = [] }: HeaderProps) {
   }, [isMobileMenuOpen])
 
   return (
-    <header className="bg-white shadow-sm border-b relative">
+    <header className="sticky top-0 bg-white shadow-sm border-b relative z-40">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
