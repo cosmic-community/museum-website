@@ -5,15 +5,15 @@ import ExhibitCard from '@/components/ExhibitCard'
 import EventCard from '@/components/EventCard'
 
 export default async function HomePage() {
-  let currentExhibits: Exhibit[] = [];
-  let upcomingEvents: Event[] = [];
+  let currentExhibits: Exhibit[] = []
+  let upcomingEvents: Event[] = []
 
   try {
-    currentExhibits = await getExhibitsByStatus('current') as Exhibit[];
-    const allEvents = await getEvents() as Event[];
-    upcomingEvents = allEvents.slice(0, 3); // Get first 3 events
+    currentExhibits = await getExhibitsByStatus('current') as Exhibit[]
+    const allEvents = await getEvents() as Event[]
+    upcomingEvents = allEvents.slice(0, 3) // Get first 3 events
   } catch (error) {
-    console.error('Error fetching homepage data:', error);
+    console.error('Error fetching homepage data:', error)
   }
 
   return (

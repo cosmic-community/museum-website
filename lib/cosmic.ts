@@ -9,7 +9,7 @@ export const cosmic = createBucketClient({
 
 // Helper function for error checking
 function hasStatus(error: unknown): error is { status: number } {
-  return typeof error === 'object' && error !== null && 'status' in error;
+  return typeof error === 'object' && error !== null && 'status' in error
 }
 
 // Fetch all exhibits
@@ -19,14 +19,14 @@ export async function getExhibits() {
       .find({ type: 'exhibits' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('-created_at');
+      .sort('-created_at')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error('Failed to fetch exhibits');
+    throw new Error('Failed to fetch exhibits')
   }
 }
 
@@ -40,14 +40,14 @@ export async function getExhibitsByStatus(status: string) {
       })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('-created_at');
+      .sort('-created_at')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error(`Failed to fetch ${status} exhibits`);
+    throw new Error(`Failed to fetch ${status} exhibits`)
   }
 }
 
@@ -59,14 +59,14 @@ export async function getExhibit(slug: string) {
         type: 'exhibits',
         slug
       })
-      .depth(1);
+      .depth(1)
     
-    return response.object;
+    return response.object
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return null;
+      return null
     }
-    throw new Error('Failed to fetch exhibit');
+    throw new Error('Failed to fetch exhibit')
   }
 }
 
@@ -77,14 +77,14 @@ export async function getEvents() {
       .find({ type: 'events' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('-created_at');
+      .sort('-created_at')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error('Failed to fetch events');
+    throw new Error('Failed to fetch events')
   }
 }
 
@@ -96,14 +96,14 @@ export async function getEvent(slug: string) {
         type: 'events',
         slug
       })
-      .depth(1);
+      .depth(1)
     
-    return response.object;
+    return response.object
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return null;
+      return null
     }
-    throw new Error('Failed to fetch event');
+    throw new Error('Failed to fetch event')
   }
 }
 
@@ -114,14 +114,14 @@ export async function getStaff() {
       .find({ type: 'staff' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('title');
+      .sort('title')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error('Failed to fetch staff');
+    throw new Error('Failed to fetch staff')
   }
 }
 
@@ -135,14 +135,14 @@ export async function getStaffByDepartment(department: string) {
       })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('title');
+      .sort('title')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error(`Failed to fetch staff for ${department} department`);
+    throw new Error(`Failed to fetch staff for ${department} department`)
   }
 }
 
@@ -154,14 +154,14 @@ export async function getStaffMember(slug: string) {
         type: 'staff',
         slug
       })
-      .depth(1);
+      .depth(1)
     
-    return response.object;
+    return response.object
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return null;
+      return null
     }
-    throw new Error('Failed to fetch staff member');
+    throw new Error('Failed to fetch staff member')
   }
 }
 
@@ -172,14 +172,14 @@ export async function getPages() {
       .find({ type: 'pages' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('title');
+      .sort('title')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error('Failed to fetch pages');
+    throw new Error('Failed to fetch pages')
   }
 }
 
@@ -193,14 +193,14 @@ export async function getNavigationPages() {
       })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1)
-      .sort('title');
+      .sort('title')
     
-    return response.objects;
+    return response.objects
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return [];
+      return []
     }
-    throw new Error('Failed to fetch navigation pages');
+    throw new Error('Failed to fetch navigation pages')
   }
 }
 
@@ -212,13 +212,13 @@ export async function getPage(slug: string) {
         type: 'pages',
         slug
       })
-      .depth(1);
+      .depth(1)
     
-    return response.object;
+    return response.object
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
-      return null;
+      return null
     }
-    throw new Error('Failed to fetch page');
+    throw new Error('Failed to fetch page')
   }
 }
