@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-gray-900 bg-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+  
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+  
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-700 hover:bg-primary-800 text-white px-6 py-3 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .prose-content h2 {
+    @apply text-2xl font-semibold mt-8 mb-4 text-gray-900;
+  }
+  
+  .prose-content h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-gray-900;
+  }
+  
+  .prose-content p {
+    @apply text-gray-700 leading-relaxed mb-4;
+  }
+  
+  .prose-content strong {
+    @apply font-semibold text-gray-900;
+  }
+  
+  .prose-content ul, .prose-content ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .prose-content li {
+    @apply mb-2 text-gray-700;
+  }
+  
+  .prose-content a {
+    @apply text-primary-600 hover:text-primary-700 underline;
+  }
+}
